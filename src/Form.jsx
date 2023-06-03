@@ -1,191 +1,116 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+
+const handleNext1Click = () => {
+  const form1 = document.getElementById('Form1')
+  const form2 = document.getElementById('Form2')
+  const progress = document.getElementById('progress')
+  form1.style.left = '-450px'
+  form2.style.left = '40px'
+  progress.style.width = '240px'
+}
+
+const handleBack1Click = () => {
+  const form1 = document.getElementById('Form1')
+  const form2 = document.getElementById('Form2')
+  const progress = document.getElementById('progress')
+  form1.style.left = '40px'
+  form2.style.left = '450px'
+  progress.style.width = '120px'
+}
+
+const handleNext2Click = () => {
+  const form2 = document.getElementById('Form2')
+  const form3 = document.getElementById('Form3')
+  const progress = document.getElementById('progress')
+  form2.style.left = '-450px'
+  form3.style.left = '40px'
+  progress.style.width = '360px'
+}
+
+const handleBack2Click = () => {
+  const form2 = document.getElementById('Form2')
+  const form3 = document.getElementById('Form3')
+  const progress = document.getElementById('progress')
+  form2.style.left = '40px'
+  form3.style.left = '450px'
+  progress.style.width = '240px'
+}
 
 const Form = () => {
+  useEffect(() => {
+    const next1Button = document.getElementById('Next1')
+    const back1Button = document.getElementById('Back1')
+    const next2Button = document.getElementById('Next2')
+    const back2Button = document.getElementById('Back2')
+
+    next1Button.addEventListener('click', handleNext1Click)
+    back1Button.addEventListener('click', handleBack1Click)
+    next2Button.addEventListener('click', handleNext2Click)
+    back2Button.addEventListener('click', handleBack2Click)
+
+    return () => {
+      next1Button.removeEventListener('click', handleNext1Click)
+      back1Button.removeEventListener('click', handleBack1Click)
+      next2Button.removeEventListener('click', handleNext2Click)
+      back2Button.removeEventListener('click', handleBack2Click)
+    }
+  }, [])
   return (
-    <form>
-      <fieldset>
-        <legend>Personal Information</legend>
+    <div className='container'>
+      <form id='Form1'>
+        <h3>CREATE ACCOUNT</h3>
+        <input type='email' placeholder='Email' required />
+        <input type='password' placeholder='Password' required />
+        <input type='password' placeholder='Confirm Password' required />
 
-        <label htmlFor='fullname'>Full Name:</label>
-        <input type='text' id='fullname' name='fullname' required />
-        <br />
-        <br />
-        <label htmlFor='email'>Email:</label>
-        <input type='email' id='email' name='email' required />
-        <br />
-        <br />
+        <div className='btn-box'>
+          <button type='button' id='Next1' onClick={handleNext1Click}>
+            Next
+          </button>
+        </div>
+      </form>
+      <form id='Form2'>
+        <h3>SOCIAL LINKS</h3>
+        <input type='url' placeholder='Medum' />
+        <input type='url' placeholder='GitHub' />
+        <input type='url' placeholder='LinkedIn' />
 
-        <label htmlFor='password'>Password:</label>
-        <input
-          type='password'
-          id='password'
-          name='password'
-          required
-          minLength='8'
-        />
-        <br />
-        <br />
+        <div className='btn-box'>
+          <button type='button' id='Back1' onClick={handleBack1Click}>
+            Back
+          </button>
+          <button type='button' id='Next2' onClick={handleNext2Click}>
+            Next
+          </button>
+        </div>
+      </form>
+      <form id='Form3'>
+        <h3>PERSONAL INFO</h3>
+        <input type='text' placeholder='First Name' required />
+        <input type='text' placeholder='Last Name' required />
+        <input type='tel' placeholder='Mobile No.' required />
 
-        <label htmlFor='bio'>Bio:</label>
-        <textarea id='bio' name='bio' rows='4' cols='50'></textarea>
-        <br />
-        <br />
+        <div className='btn-box'>
+          <button type='button' id='Back2' onClick={handleBack2Click}>
+            Back
+          </button>
+          <button type='submit'>Submit</button>
+        </div>
+      </form>
 
-        <label htmlFor='profile-pic'>Profile Picture:</label>
-        <input
-          type='file'
-          id='profile-pic'
-          name='profile-pic'
-          accept='image/*'
-        />
-        <br />
-        <br />
-
-        <label htmlFor='github'>GitHub:</label>
-        <input type='url' id='github' name='github' />
-        <br />
-        <br />
-
-        <label htmlFor='linkedin'>LinkedIn:</label>
-        <input type='url' id='linkedin' name='linkedin' />
-        <br />
-        <br />
-
-        <label htmlFor='portfolio'>Portfolio:</label>
-        <input type='url' id='portfolio' name='portfolio' />
-        <br />
-        <br />
-
-        <label htmlFor='social-media'>Additional Social Media:</label>
-        <input type='url' id='social-media' name='social-media' />
-        <br />
-        <br />
-      </fieldset>
-
-      <fieldset>
-        <legend>Education</legend>
-
-        <label htmlFor='bootcamp-major'>Bootcamp Major:</label>
-        <select id='bootcamp-major' name='bootcamp-major'>
-          <option value='webdev'>Web Development</option>
-          <option value='analytics'>Data Analytics</option>
-          <option value='cybersec'>Cybersecurity</option>
-          <option value='uxui'>UX/UI Design</option>
-          <option value='fintech'>Fintech</option>
-          <option value='marketing'>Digital Marketing</option>
-          <option value='projmanage'>Project Management</option>
-          <option value='none'>Did Not Attend</option>
-        </select>
-        <br />
-
-        <br />
-
-        <label htmlFor='bootcamp-location'>Bootcamp Location:</label>
-        <input type='text' id='bootcamp-location' name='bootcamp-location' />
-        <br />
-
-        <br />
-        <label htmlFor='graduation-year'>Graduation Year:</label>
-        <input type='date' id='graduation-year' name='graduation-year' />
-
-        <br />
-
-        <br />
-        <label>Years of experience in bootcamp field:</label>
-        <br />
-
-        <label>
-          <input type='radio' name='experience' value='0-1' />
-          0-1 years
-        </label>
-        <br />
-
-        <label>
-          <input type='radio' name='experience' value='1-3' />
-          1-3 years
-        </label>
-        <br />
-
-        <label>
-          <input type='radio' name='experience' value='3+' />
-          3+ years
-        </label>
-      </fieldset>
-
-      <fieldset>
-        <legend>Skills</legend>
-        <label htmlFor='skills'>Skills:</label>
-        <br />
-        <textarea id='skills' name='skills' rows='4' cols='50'></textarea>
-        <p>Interests:</p>
-        <label>
-          <input type='checkbox' name='interests' value='learning' /> Learning
-          New Skills
-        </label>
-        <br />
-        <label>
-          <input type='checkbox' name='interests' value='seeking' /> Seeking
-          Employment
-        </label>
-        <br />
-        <label>
-          <input type='checkbox' name='interests' value='hobby' /> Hobby
-          Building
-        </label>
-        <br />
-        <label>
-          <input type='checkbox' name='interests' value='products' /> Making
-          Profitable Products
-        </label>
-        <br />
-        <label>
-          <input type='checkbox' name='interests' value='networking' /> Project
-          Networking
-        </label>
-        <br />
-        <label>
-          <input type='checkbox' name='interests' value='helping' /> Helping
-          Others
-        </label>
-        <br />
-        <label>
-          <input type='checkbox' name='interests' value='unsure' /> Unsure
-        </label>
-        <br />
-        <br />
-        <label htmlFor='commitment-days'>
-          Number of days a week you can commit to working on group projects:
-        </label>
-        <br />
-        <input
-          type='range'
-          id='commitment-days'
-          name='commitment-days'
-          min='1'
-          max='7'
-          onChange={(e) => {
-            const value = e.target.value
-            document.getElementById('commitment-days-value').textContent = value
-          }}
-        />
-        <br />
-        <span id='commitment-days-value'>1</span> day(s)
-      </fieldset>
-
-      <fieldset>
-        <legend>Terms and Conditions</legend>
-
-        <label>
-          <input type='checkbox' name='agreement' required />I agree to the{' '}
-          <a href='https://youtu.be/HIcSWuKMwOw' target='_blank'>
-            Terms and Conditions
-          </a>
-          .
-        </label>
-      </fieldset>
-
-      <button type='submit'>Sign Up</button>
-    </form>
+      <div className='step-row'>
+        <div id='progress'></div>
+        <div className='step-col'>
+          <small>Step 1</small>
+        </div>
+        <div className='step-col'>
+          <small>Step 2</small>
+        </div>
+        <div className='step-col'>
+          <small>Step 3</small>
+        </div>
+      </div>
+    </div>
   )
 }
 

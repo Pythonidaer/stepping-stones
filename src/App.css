@@ -1,9 +1,21 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
 }
+body {
+  /* background-color: rgba(52, 53, 65, 1); */
+  /* color: #fff;  */
+  background-image: linear-gradient(rgba(52, 53, 65, 1), rgba(52, 53, 65, 0.8));
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* a {
+  color: #fff; 
+} */
 
 .logo {
   height: 6em;
@@ -11,32 +23,110 @@
   will-change: filter;
   transition: filter 300ms;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+.header-content {
+  margin: 0 auto;
+  text-align: center;
+  color: #fff;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Container height/width may need to be modified */
+/* Different styles may be required for device size responsiveness */
+/* Will also need to re-work all of this into styled components */
+.container {
+  width: 360px;
+  height: 400px;
+  margin: 8% auto;
+  background: #fff;
+  border-radius: 5px;
+  position: relative;
+  /* uncomment this to see the additional forms */
+  overflow: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+h3 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #777;
 }
 
-.card {
-  padding: 2em;
+.container form {
+  width: 280px;
+  position: absolute;
+  top: 100px;
+  left: 40px;
+  transition: 0.5s;
 }
 
-.read-the-docs {
-  color: #888;
+form input {
+  width: 100%;
+  padding: 10px 5px;
+  margin: 5px 0;
+  border: 0;
+  border-bottom: 1px solid #999;
+  outline: none;
+  background: transparent;
+}
+::placeholder {
+  color: #777;
+}
+.btn-box {
+  width: 100%;
+  margin: 30px auto;
+  text-align: center;
+}
+
+form button {
+  width: 110px;
+  height: 35px;
+  margin: 0 10px;
+  background: linear-gradient(to right, #ff6b81, #ff9770);
+
+  border-radius: 30px;
+  border: 0;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+#Form2 {
+  left: 450px;
+}
+#Form3 {
+  left: 450px;
+}
+
+.step-row {
+  width: 360px;
+  height: 40px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 -1px 5px -1px #000;
+  position: relative;
+}
+
+.step-col {
+  width: 120px;
+  text-align: center;
+  color: #333;
+  position: relative;
+}
+#progress {
+  position: absolute;
+  height: 100%;
+  width: 120px;
+  background: linear-gradient(to right, #ff6b81, #ff9770);
+  transition: 1s;
+}
+#progress::after {
+  content: '';
+  height: 0;
+  width: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  position: absolute;
+  right: -20px;
+  top: 0;
+  border-left: 20px solid #ff9770;
 }
