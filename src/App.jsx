@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import brainLogo from '/brain.svg'
+import Form from './Form.jsx'
 import './App.css'
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         </a>
       </div>
       <h1>Stepping Stones</h1>
+      <Form />
     </>
   )
 }
