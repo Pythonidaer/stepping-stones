@@ -74,6 +74,7 @@ const Form = () => {
           <option value='fintech'>Fintech</option>
           <option value='marketing'>Digital Marketing</option>
           <option value='projmanage'>Project Management</option>
+          <option value='none'>Did Not Attend</option>
         </select>
         <br />
 
