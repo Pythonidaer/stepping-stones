@@ -4,15 +4,10 @@
   font-family: sans-serif;
 }
 
-#root {
+body {
   background-image: linear-gradient(rgba(52, 53, 65, 1), rgba(52, 53, 65, 0.8));
   background-repeat: no-repeat;
   background-size: cover;
-}
-body {
-  /* background-image: linear-gradient(rgba(52, 53, 65, 1), rgba(52, 53, 65, 0.8));
-  background-repeat: no-repeat;
-  background-size: cover; */
   height: 100vh;
   width: 100vw;
 }
