@@ -3,12 +3,25 @@
   padding: 0;
   font-family: sans-serif;
 }
-body {
+
+#root {
   background-image: linear-gradient(rgba(52, 53, 65, 1), rgba(52, 53, 65, 0.8));
   background-repeat: no-repeat;
   background-size: cover;
+}
+body {
+  /* background-image: linear-gradient(rgba(52, 53, 65, 1), rgba(52, 53, 65, 0.8));
+  background-repeat: no-repeat;
+  background-size: cover; */
   height: 100vh;
   width: 100vw;
+}
+
+footer {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo {
@@ -26,8 +39,8 @@ body {
 
 .container {
   width: 360px;
-  height: 575px;
-  margin: 4% auto;
+  height: 650px;
+  margin: 4% auto 0;
   background: #fff;
   border-radius: 5px;
   position: relative;
@@ -43,7 +56,7 @@ h3 {
 
 .container form {
   width: 280px;
-  height: 500px;
+  height: 550px;
 
   position: absolute;
   top: 75px;

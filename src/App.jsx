@@ -16,6 +16,7 @@ function App() {
         <h1>STEPPING STONES</h1>
       </div>
       <Form />
+      <footer>Copyright Stepping Stones 2023</footer>
       {/* <BackupForm /> */}
     </>
   )
