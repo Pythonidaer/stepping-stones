@@ -38,8 +38,6 @@ const handleBack2Click = () => {
 
 const Form = () => {
   useEffect(() => {
-    const placeholderText = 'Select a date'
-
     const next1Button = document.getElementById('Next1')
     const back1Button = document.getElementById('Back1')
     const next2Button = document.getElementById('Next2')
@@ -98,7 +96,7 @@ const Form = () => {
         </div>
       </form>
       <form id='Form2'>
-        <h3>EDUCATION</h3>
+        <h3>EDUCATION AND SKILLS</h3>
         <select
           id='bootcamp-major'
           className='bootcamp-major-field'
@@ -153,6 +151,13 @@ const Form = () => {
             </label>
           </div>
         </div>
+        <textarea
+          id='skills'
+          placeholder='Skills'
+          name='skills'
+          rows='4'
+          cols='50'
+        ></textarea>
         <div className='btn-box'>
           <button type='button' id='Back1' onClick={handleBack1Click}>
             Back
@@ -163,14 +168,8 @@ const Form = () => {
         </div>
       </form>
       <form id='Form3'>
-        <h3>SKILLS AND INTERESTS</h3>
-        <textarea
-          id='skills'
-          placeholder='Skills'
-          name='skills'
-          rows='4'
-          cols='50'
-        ></textarea>
+        <h3>INTERESTS AND AVAILABILITY</h3>
+
         <div className='interests-checkbox-options-border'>
           <p className='interests'>Interests:</p>
           <div className='checkbox-options'>
