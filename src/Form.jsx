@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
 
 const handleNext1Click = () => {
   const form1 = document.getElementById('Form1')
@@ -37,6 +38,23 @@ const handleBack2Click = () => {
 }
 
 const Form = () => {
+  const { register, handleSubmit, watch } = useForm()
+  const onSubmit = async (data) => {
+    // Need to survey Apps Script to see
+    // If this data and be formatted and sent to Google Docs
+    // Requires a lot of investigation though
+    const formData = {
+      personalInformation: data.personalInformation,
+      educationAndSkills: data.educationAndSkills,
+      interestsAndAvailability: data.interestsAndAvailability,
+    }
+    console.log(formData) // Array of form data objects
+    const formattedData = JSON.stringify(data, null, 2)
+    alert(formattedData)
+  }
+
+  const watchAllFields = watch() // Watch all fields for changes
+
   useEffect(() => {
     const next1Button = document.getElementById('Next1')
     const back1Button = document.getElementById('Back1')
@@ -58,19 +76,30 @@ const Form = () => {
 
   return (
     <div className='container'>
-      <form id='Form1'>
+      <form id='Form1' onSubmit={handleSubmit(onSubmit)}>
         <h3>PERSONAL INFORMATION</h3>
-        <input type='text' placeholder='Full Name' required />
-        <input type='email' placeholder='Email' required />
+        <input
+          type='text'
+          placeholder='Name'
+          {...register('personalInformation.fullName')}
+          required
+        />
+        <input
+          type='email'
+          placeholder='Email'
+          {...register('personalInformation.email')}
+          required
+        />
         <input type='password' placeholder='Password' required />
         <input type='password' placeholder='Confirm Password' required />
 
         <textarea
           placeholder='Bio'
           id='bio'
-          name='bio'
+          name='Bio'
           rows='4'
           cols='50'
+          {...register('personalInformation.bio')}
         ></textarea>
 
         <label
@@ -84,8 +113,9 @@ const Form = () => {
           type='file'
           hidden={true}
           id='profile-pic'
-          name='profile-pic'
+          name='Image'
           accept='image/*'
+          {...register('personalInformation.image')}
         />
         <div className='w-file-upload-info'>Max file size 10MB. (optional)</div>
 
@@ -95,13 +125,14 @@ const Form = () => {
           </button>
         </div>
       </form>
-      <form id='Form2'>
+      <form id='Form2' onSubmit={handleSubmit(onSubmit)}>
         <h3>EDUCATION AND SKILLS</h3>
         <select
           id='bootcamp-major'
           className='bootcamp-major-field'
-          name='bootcamp-major'
+          name='Major'
           defaultValue='option1'
+          {...register('educationAndSkills.bootcampMajor')}
         >
           <option value='option1' disabled={true}>
             Bootcamp Major
@@ -120,14 +151,16 @@ const Form = () => {
           type='text'
           placeholder='Bootcamp Location'
           id='bootcamp-location'
-          name='bootcamp-location'
+          name='Location'
+          {...register('educationAndSkills.bootcampLocation')}
         />
 
         <input
           type='text'
-          placeholder='Bootcamp Location: mm/dd/yyyy'
+          placeholder='Graduation Date: mm/dd/yyyy'
           id='graduation-year'
-          name='graduation-year'
+          name='Graduation'
+          {...register('educationAndSkills.graduationDate')}
         />
 
         <div className='experience-radio-options-border'>
@@ -136,17 +169,32 @@ const Form = () => {
           </label>
           <div className='experience-radio-options'>
             <label>
-              <input type='radio' name='experience' value='0-1' />
+              <input
+                type='radio'
+                name='Experience'
+                value='0-1'
+                {...register('educationAndSkills.yearsExperience')}
+              />
               <span>0-1</span>
             </label>
 
             <label>
-              <input type='radio' name='experience' value='1-3' />
+              <input
+                type='radio'
+                name='Experience'
+                value='1-3'
+                {...register('educationAndSkills.yearsExperience')}
+              />
               <span>1-3</span>
             </label>
 
             <label>
-              <input type='radio' name='experience' value='3+' />
+              <input
+                type='radio'
+                name='Experience'
+                value='3+'
+                {...register('educationAndSkills.yearsExperience')}
+              />
               <span>3+</span>
             </label>
           </div>
@@ -154,9 +202,10 @@ const Form = () => {
         <textarea
           id='skills'
           placeholder='Skills'
-          name='skills'
+          name='Skills'
           rows='4'
           cols='50'
+          {...register('educationAndSkills.skills')}
         ></textarea>
         <div className='btn-box'>
           <button type='button' id='Back1' onClick={handleBack1Click}>
@@ -167,38 +216,73 @@ const Form = () => {
           </button>
         </div>
       </form>
-      <form id='Form3'>
+      <form id='Form3' onSubmit={handleSubmit(onSubmit)}>
         <h3>INTERESTS AND AVAILABILITY</h3>
 
         <div className='interests-checkbox-options-border'>
           <p className='interests'>Interests:</p>
           <div className='checkbox-options'>
             <label>
-              <input type='checkbox' name='interests' value='learning' />
+              <input
+                type='checkbox'
+                name='Interests'
+                value='learning'
+                {...register('interestsAndAvailability.interests')}
+              />
               <span>Learning New Skills</span>
             </label>
             <label>
-              <input type='checkbox' name='interests' value='seeking' />
+              <input
+                type='checkbox'
+                name='Interests'
+                value='seeking'
+                {...register('interestsAndAvailability.interests')}
+              />
               <span>Seeking Employment</span>
             </label>
             <label>
-              <input type='checkbox' name='interests' value='hobby' />
+              <input
+                type='checkbox'
+                name='Interests'
+                value='hobby'
+                {...register('interestsAndAvailability.interests')}
+              />
               <span>Hobby Building</span>
             </label>
             <label>
-              <input type='checkbox' name='interests' value='products' />
+              <input
+                type='checkbox'
+                name='Interests'
+                value='products'
+                {...register('interestsAndAvailability.interests')}
+              />
               <span>Making Profitable Products</span>
             </label>
             <label>
-              <input type='checkbox' name='interests' value='networking' />
+              <input
+                type='checkbox'
+                name='Interests'
+                value='networking'
+                {...register('interestsAndAvailability.interests')}
+              />
               <span>Project Networking</span>
             </label>
             <label>
-              <input type='checkbox' name='interests' value='helping' />
+              <input
+                type='checkbox'
+                name='Interests'
+                value='helping'
+                {...register('interestsAndAvailability.interests')}
+              />
               <span>Helping Others</span>
             </label>
             <label>
-              <input type='checkbox' name='interests' value='unsure' />
+              <input
+                type='checkbox'
+                name='Interests'
+                value='unsure'
+                {...register('interestsAndAvailability.interests')}
+              />
               <span>Unsure</span>
             </label>
           </div>
@@ -210,9 +294,10 @@ const Form = () => {
           <input
             type='range'
             id='commitment-days'
-            name='commitment-days'
+            name='Commitment'
             min='1'
             max='7'
+            {...register('interestsAndAvailability.commitmentDays')}
             onChange={(e) => {
               const value = e.target.value
               document.getElementById('commitment-days-value').textContent =

@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import brainLogo from '/brain.svg'
 import Form from './Form.jsx'
-// import BackupForm from './BackupForm.jsx'
 import './App.css'
 
 function App() {
@@ -17,7 +16,6 @@ function App() {
       </div>
       <Form />
       <footer>Copyright Stepping Stones 2023</footer>
-      {/* <BackupForm /> */}
     </>
   )
 }

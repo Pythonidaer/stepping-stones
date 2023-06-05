@@ -13,6 +13,7 @@ src/backupindex.css
 src/backupForm.jsx
 src/pulltext.html
 src/backupTutorial.jsx
+src/backupCrapForm.jsx
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
