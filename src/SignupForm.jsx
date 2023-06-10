@@ -1,5 +1,31 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import StepRow from './components/StepRow.jsx'
+import Container from './components/styles/Container.styled.jsx'
+import ButtonContainer from './components/styles/ButtonContainer.styled.jsx'
+
+import {
+  Form,
+  Title,
+  TextInput,
+  Textarea,
+  FileUploadButton,
+  FileUploadButtonLabel,
+  FileUploadInfo,
+  Select,
+  RadioOptionsBorder,
+  RadioOptionsLabel,
+  RadioOptions,
+  RadioLabel,
+  RadioSpan,
+  CheckboxOptionsBorder,
+  Interests,
+  CheckboxOptions,
+  CheckboxLabel,
+  CommitmentDays,
+  CommitmentDaysBorder,
+  CommitmentDaysValue,
+} from './components/styles/Form.styled.jsx'
 
 const handleNext1Click = () => {
   const form1 = document.getElementById('Form1')
@@ -37,7 +63,7 @@ const handleBack2Click = () => {
   progress.style.width = '240px'
 }
 
-const Form = () => {
+const SignupForm = () => {
   const { register, handleSubmit, watch } = useForm()
   const onSubmit = async (data) => {
     // Need to survey Apps Script to see
@@ -75,41 +101,37 @@ const Form = () => {
   }, [])
 
   return (
-    <div className='container'>
-      <form id='Form1' onSubmit={handleSubmit(onSubmit)}>
-        <h3>PERSONAL INFORMATION</h3>
-        <input
+    <Container>
+      <Form id='Form1' onSubmit={handleSubmit(onSubmit)}>
+        <Title>PERSONAL INFORMATION</Title>
+        <TextInput
           type='text'
           placeholder='Name'
           {...register('personalInformation.fullName')}
           required
         />
-        <input
+        <TextInput
           type='email'
           placeholder='Email'
           {...register('personalInformation.email')}
           required
         />
-        <input type='password' placeholder='Password' required />
-        <input type='password' placeholder='Confirm Password' required />
+        <TextInput type='password' placeholder='Password' required />
+        <TextInput type='password' placeholder='Confirm Password' required />
 
-        <textarea
+        <Textarea
           placeholder='Bio'
           id='bio'
           name='Bio'
           rows='4'
           cols='50'
           {...register('personalInformation.bio')}
-        ></textarea>
+        ></Textarea>
 
-        <label
-          className='form-file-upload-button'
-          htmlFor='profile-pic'
-          role='button'
-        >
-          <div>Profile Picture</div>
-        </label>
-        <input
+        <FileUploadButton htmlFor='profile-pic' role='button'>
+          <FileUploadButtonLabel>Profile Picture</FileUploadButtonLabel>
+        </FileUploadButton>
+        <TextInput
           type='file'
           hidden={true}
           id='profile-pic'
@@ -117,19 +139,18 @@ const Form = () => {
           accept='image/*'
           {...register('personalInformation.image')}
         />
-        <div className='w-file-upload-info'>Max file size 10MB. (optional)</div>
+        <FileUploadInfo>Max file size 10MB. (optional)</FileUploadInfo>
 
-        <div className='btn-box'>
+        <ButtonContainer>
           <button type='button' id='Next1' onClick={handleNext1Click}>
             Next
           </button>
-        </div>
-      </form>
-      <form id='Form2' onSubmit={handleSubmit(onSubmit)}>
-        <h3>EDUCATION AND SKILLS</h3>
-        <select
+        </ButtonContainer>
+      </Form>
+      <Form id='Form2' onSubmit={handleSubmit(onSubmit)}>
+        <Title>EDUCATION AND SKILLS</Title>
+        <Select
           id='bootcamp-major'
-          className='bootcamp-major-field'
           name='Major'
           defaultValue='option1'
           {...register('educationAndSkills.bootcampMajor')}
@@ -145,9 +166,9 @@ const Form = () => {
           <option value='marketing'>Digital Marketing</option>
           <option value='projmanage'>Project Management</option>
           <option value='none'>Did Not Attend</option>
-        </select>
+        </Select>
 
-        <input
+        <TextInput
           type='text'
           placeholder='Bootcamp Location'
           id='bootcamp-location'
@@ -155,7 +176,7 @@ const Form = () => {
           {...register('educationAndSkills.bootcampLocation')}
         />
 
-        <input
+        <TextInput
           type='text'
           placeholder='Graduation Date: mm/dd/yyyy'
           id='graduation-year'
@@ -163,135 +184,135 @@ const Form = () => {
           {...register('educationAndSkills.graduationDate')}
         />
 
-        <div className='experience-radio-options-border'>
-          <label className='experience-radio-options-label'>
+        <RadioOptionsBorder>
+          <RadioOptionsLabel>
             Years of experience in bootcamp field:
-          </label>
-          <div className='experience-radio-options'>
-            <label>
-              <input
+          </RadioOptionsLabel>
+          <RadioOptions>
+            <RadioLabel>
+              <TextInput
                 type='radio'
                 name='Experience'
                 value='0-1'
                 {...register('educationAndSkills.yearsExperience')}
               />
-              <span>0-1</span>
-            </label>
+              <RadioSpan>0-1</RadioSpan>
+            </RadioLabel>
 
-            <label>
-              <input
+            <RadioLabel>
+              <TextInput
                 type='radio'
                 name='Experience'
                 value='1-3'
                 {...register('educationAndSkills.yearsExperience')}
               />
-              <span>1-3</span>
-            </label>
+              <RadioSpan>1-3</RadioSpan>
+            </RadioLabel>
 
-            <label>
-              <input
+            <RadioLabel>
+              <TextInput
                 type='radio'
                 name='Experience'
                 value='3+'
                 {...register('educationAndSkills.yearsExperience')}
               />
-              <span>3+</span>
-            </label>
-          </div>
-        </div>
-        <textarea
+              <RadioSpan>3+</RadioSpan>
+            </RadioLabel>
+          </RadioOptions>
+        </RadioOptionsBorder>
+        <Textarea
           id='skills'
           placeholder='Skills'
           name='Skills'
           rows='4'
           cols='50'
           {...register('educationAndSkills.skills')}
-        ></textarea>
-        <div className='btn-box'>
+        ></Textarea>
+        <ButtonContainer>
           <button type='button' id='Back1' onClick={handleBack1Click}>
             Back
           </button>
           <button type='button' id='Next2' onClick={handleNext2Click}>
             Next
           </button>
-        </div>
-      </form>
-      <form id='Form3' onSubmit={handleSubmit(onSubmit)}>
-        <h3>INTERESTS AND AVAILABILITY</h3>
+        </ButtonContainer>
+      </Form>
+      <Form id='Form3' onSubmit={handleSubmit(onSubmit)}>
+        <Title>INTERESTS AND AVAILABILITY</Title>
 
-        <div className='interests-checkbox-options-border'>
-          <p className='interests'>Interests:</p>
-          <div className='checkbox-options'>
-            <label>
-              <input
+        <CheckboxOptionsBorder>
+          <Interests>Interests:</Interests>
+          <CheckboxOptions>
+            <CheckboxLabel>
+              <TextInput
                 type='checkbox'
                 name='Interests'
                 value='learning'
                 {...register('interestsAndAvailability.interests')}
               />
               <span>Learning New Skills</span>
-            </label>
-            <label>
-              <input
+            </CheckboxLabel>
+            <CheckboxLabel>
+              <TextInput
                 type='checkbox'
                 name='Interests'
                 value='seeking'
                 {...register('interestsAndAvailability.interests')}
               />
               <span>Seeking Employment</span>
-            </label>
-            <label>
-              <input
+            </CheckboxLabel>
+            <CheckboxLabel>
+              <TextInput
                 type='checkbox'
                 name='Interests'
                 value='hobby'
                 {...register('interestsAndAvailability.interests')}
               />
               <span>Hobby Building</span>
-            </label>
-            <label>
-              <input
+            </CheckboxLabel>
+            <CheckboxLabel>
+              <TextInput
                 type='checkbox'
                 name='Interests'
                 value='products'
                 {...register('interestsAndAvailability.interests')}
               />
               <span>Making Profitable Products</span>
-            </label>
-            <label>
-              <input
+            </CheckboxLabel>
+            <CheckboxLabel>
+              <TextInput
                 type='checkbox'
                 name='Interests'
                 value='networking'
                 {...register('interestsAndAvailability.interests')}
               />
               <span>Project Networking</span>
-            </label>
-            <label>
-              <input
+            </CheckboxLabel>
+            <CheckboxLabel>
+              <TextInput
                 type='checkbox'
                 name='Interests'
                 value='helping'
                 {...register('interestsAndAvailability.interests')}
               />
               <span>Helping Others</span>
-            </label>
-            <label>
-              <input
+            </CheckboxLabel>
+            <CheckboxLabel>
+              <TextInput
                 type='checkbox'
                 name='Interests'
                 value='unsure'
                 {...register('interestsAndAvailability.interests')}
               />
               <span>Unsure</span>
-            </label>
-          </div>
-        </div>
-        <div className='commitment-days-range-border'>
-          <label className='commitment-days' htmlFor='commitment-days'>
+            </CheckboxLabel>
+          </CheckboxOptions>
+        </CheckboxOptionsBorder>
+        <CommitmentDaysBorder>
+          <CommitmentDays htmlFor='commitment-days'>
             Number of days a week you can commit to working on group projects:
-          </label>
-          <input
+          </CommitmentDays>
+          <TextInput
             type='range'
             id='commitment-days'
             name='Commitment'
@@ -304,32 +325,20 @@ const Form = () => {
                 value
             }}
           />
-          <div className='commitment-days-value'>
+          <CommitmentDaysValue>
             <span id='commitment-days-value'>1</span> day(s)
-          </div>
-        </div>
-        <div className='btn-box'>
+          </CommitmentDaysValue>
+        </CommitmentDaysBorder>
+        <ButtonContainer>
           <button type='button' id='Back2' onClick={handleBack2Click}>
             Back
           </button>
           <button type='submit'>Submit</button>
-        </div>
-      </form>
-
-      <div className='step-row'>
-        <div id='progress'></div>
-        <div className='step-col'>
-          <small>Step 1</small>
-        </div>
-        <div className='step-col'>
-          <small>Step 2</small>
-        </div>
-        <div className='step-col'>
-          <small>Step 3</small>
-        </div>
-      </div>
-    </div>
+        </ButtonContainer>
+      </Form>
+      <StepRow />
+    </Container>
   )
 }
 
-export default Form
+export default SignupForm

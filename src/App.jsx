@@ -1,20 +1,21 @@
 import { useState } from 'react'
 import brainLogo from '/brain.svg'
-import Form from './Form.jsx'
-import './App.css'
+import SignupForm from './SignupForm.jsx'
+import GlobalStyles from './components/styles/Global.jsx'
+import HeaderContent from './components/styles/HeaderContent.styled.jsx'
+import Logo from './components/styles/Logo.styled.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div className='header-content'>
+      <GlobalStyles />
+      <HeaderContent>
         <a href='https://www.linkedin.com/in/jonamichahammo/' target='_blank'>
-          <img src={brainLogo} className='logo' alt='Stepping Stones logo' />
+          <Logo src={brainLogo} className='logo' alt='Stepping Stones logo' />
         </a>
         <h1>STEPPING STONES</h1>
-      </div>
-      <Form />
+      </HeaderContent>
+      <SignupForm />
       <footer>Copyright Stepping Stones 2023</footer>
     </>
   )
