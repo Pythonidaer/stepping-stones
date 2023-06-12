@@ -136,3 +136,13 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Files I Typically Git Ignore
+
+/.cache
+config.env
+.DS_Store
+.env
+node_modules
+package-lock.json
+/.vscode
