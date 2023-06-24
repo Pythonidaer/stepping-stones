@@ -1,4 +1,3 @@
-<<<<<<< HEAD:src/pages/SignupForm.jsx
 import React, { useEffect, useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
@@ -29,9 +28,6 @@ import {
 } from '../components/styles/Form.styled.jsx'
 import axios from 'axios'
 import { AuthContext } from '../context/AuthContext.jsx'
-=======
-import React, { useEffect, useState } from 'react'
->>>>>>> parent of ff8fa0b... Incorporated React-Hook-Form and should do styled-components next:src/Form.jsx
 
 const handleNext1Click = () => {
   const form1 = document.getElementById('Form1')

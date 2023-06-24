@@ -16,7 +16,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@material-ui/core": "^4.12.4",
@@ -36,10 +35,6 @@
     "react-hook-form": "^7.44.3",
     "react-router-dom": "^6.13.0",
     "styled-components": "^6.0.0-rc.3"
-=======
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
->>>>>>> parent of ff8fa0b... Incorporated React-Hook-Form and should do styled-components next
   },
   "devDependencies": {
     "@types/react": "^18.0.37",
