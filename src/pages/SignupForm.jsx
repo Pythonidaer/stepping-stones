@@ -1,3 +1,4 @@
+<<<<<<< HEAD:src/pages/SignupForm.jsx
 import React, { useEffect, useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
@@ -28,6 +29,9 @@ import {
 } from '../components/styles/Form.styled.jsx'
 import axios from 'axios'
 import { AuthContext } from '../context/AuthContext.jsx'
+=======
+import React, { useEffect, useState } from 'react'
+>>>>>>> parent of ff8fa0b... Incorporated React-Hook-Form and should do styled-components next:src/Form.jsx
 
 const handleNext1Click = () => {
   const form1 = document.getElementById('Form1')
@@ -65,6 +69,7 @@ const handleBack2Click = () => {
   progress.style.width = '240px'
 }
 
+<<<<<<< HEAD:src/pages/SignupForm.jsx
 const SignupForm = () => {
   const navigate = useNavigate()
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
@@ -113,6 +118,9 @@ const SignupForm = () => {
 
   const watchAllFields = watch() // Watch all fields for changes
 
+=======
+const Form = () => {
+>>>>>>> parent of ff8fa0b... Incorporated React-Hook-Form and should do styled-components next:src/Form.jsx
   useEffect(() => {
     const next1Button = document.getElementById('Next1')
     const back1Button = document.getElementById('Back1')
@@ -133,6 +141,7 @@ const SignupForm = () => {
   }, [])
 
   return (
+<<<<<<< HEAD:src/pages/SignupForm.jsx
     <Container>
       <Form id='Form1' onSubmit={handleSubmit(onSubmit)}>
         <Title>PERSONAL INFORMATION</Title>
@@ -158,11 +167,23 @@ const SignupForm = () => {
           {...register('personalInformation.confirmPassword')}
         />
         <Textarea
+=======
+    <div className='container'>
+      <form id='Form1'>
+        <h3>PERSONAL INFORMATION</h3>
+        <input type='text' placeholder='Full Name' required />
+        <input type='email' placeholder='Email' required />
+        <input type='password' placeholder='Password' required />
+        <input type='password' placeholder='Confirm Password' required />
+
+        <textarea
+>>>>>>> parent of ff8fa0b... Incorporated React-Hook-Form and should do styled-components next:src/Form.jsx
           placeholder='Bio'
           id='bio'
-          name='Bio'
+          name='bio'
           rows='4'
           cols='50'
+<<<<<<< HEAD:src/pages/SignupForm.jsx
           {...register('personalInformation.bio')}
         ></Textarea>
         {/*
@@ -170,12 +191,23 @@ const SignupForm = () => {
           <FileUploadButtonLabel>Profile Picture</FileUploadButtonLabel>
         </FileUploadButton>
         <TextInput
+=======
+        ></textarea>
+
+        <label
+          className='form-file-upload-button'
+          htmlFor='profile-pic'
+          role='button'
+        >
+          <div>Profile Picture</div>
+        </label>
+        <input
+>>>>>>> parent of ff8fa0b... Incorporated React-Hook-Form and should do styled-components next:src/Form.jsx
           type='file'
           hidden={true}
           id='profile-pic'
-          name='Image'
+          name='profile-pic'
           accept='image/*'
-          {...register('personalInformation.image')}
         />
         <FileUploadInfo>Max file size 10MB. (optional)</FileUploadInfo>
   */}
@@ -183,6 +215,7 @@ const SignupForm = () => {
           <button type='button' id='Next1' onClick={handleNext1Click}>
             Next
           </button>
+<<<<<<< HEAD:src/pages/SignupForm.jsx
         </ButtonContainer>
       </Form>
       <Form id='Form2' onSubmit={handleSubmit(onSubmit)}>
@@ -190,8 +223,17 @@ const SignupForm = () => {
         <Select
           id='bootcamp-major'
           name='Major'
+=======
+        </div>
+      </form>
+      <form id='Form2'>
+        <h3>EDUCATION AND SKILLS</h3>
+        <select
+          id='bootcamp-major'
+          className='bootcamp-major-field'
+          name='bootcamp-major'
+>>>>>>> parent of ff8fa0b... Incorporated React-Hook-Form and should do styled-components next:src/Form.jsx
           defaultValue='option1'
-          {...register('educationAndSkills.bootcampMajor')}
         >
           <option value='option1' disabled={true}>
             Bootcamp Major
@@ -210,21 +252,20 @@ const SignupForm = () => {
           type='text'
           placeholder='Bootcamp Location'
           id='bootcamp-location'
-          name='Location'
-          {...register('educationAndSkills.bootcampLocation')}
+          name='bootcamp-location'
         />
 
         <TextInput
           type='text'
-          placeholder='Graduation Date: mm/dd/yyyy'
+          placeholder='Bootcamp Location: mm/dd/yyyy'
           id='graduation-year'
-          name='Graduation'
-          {...register('educationAndSkills.graduationDate')}
+          name='graduation-year'
         />
 
         <RadioOptionsBorder>
           <RadioOptionsLabel>
             Years of experience in bootcamp field:
+<<<<<<< HEAD:src/pages/SignupForm.jsx
           </RadioOptionsLabel>
           <RadioOptions>
             <RadioLabel>
@@ -259,20 +300,47 @@ const SignupForm = () => {
           </RadioOptions>
         </RadioOptionsBorder>
         <Textarea
+=======
+          </label>
+          <div className='experience-radio-options'>
+            <label>
+              <input type='radio' name='experience' value='0-1' />
+              <span>0-1</span>
+            </label>
+
+            <label>
+              <input type='radio' name='experience' value='1-3' />
+              <span>1-3</span>
+            </label>
+
+            <label>
+              <input type='radio' name='experience' value='3+' />
+              <span>3+</span>
+            </label>
+          </div>
+        </div>
+        <textarea
+>>>>>>> parent of ff8fa0b... Incorporated React-Hook-Form and should do styled-components next:src/Form.jsx
           id='skills'
           placeholder='Skills'
-          name='Skills'
+          name='skills'
           rows='4'
           cols='50'
+<<<<<<< HEAD:src/pages/SignupForm.jsx
           {...register('educationAndSkills.skills')}
         ></Textarea>
         <ButtonContainer>
+=======
+        ></textarea>
+        <div className='btn-box'>
+>>>>>>> parent of ff8fa0b... Incorporated React-Hook-Form and should do styled-components next:src/Form.jsx
           <button type='button' id='Back1' onClick={handleBack1Click}>
             Back
           </button>
           <button type='button' id='Next2' onClick={handleNext2Click}>
             Next
           </button>
+<<<<<<< HEAD:src/pages/SignupForm.jsx
         </ButtonContainer>
       </Form>
       <Form id='Form3' onSubmit={handleSubmit(onSubmit)}>
@@ -342,6 +410,42 @@ const SignupForm = () => {
                 value='unsure'
                 {...register('interestsAndAvailability.interests')}
               />
+=======
+        </div>
+      </form>
+      <form id='Form3'>
+        <h3>INTERESTS AND AVAILABILITY</h3>
+
+        <div className='interests-checkbox-options-border'>
+          <p className='interests'>Interests:</p>
+          <div className='checkbox-options'>
+            <label>
+              <input type='checkbox' name='interests' value='learning' />
+              <span>Learning New Skills</span>
+            </label>
+            <label>
+              <input type='checkbox' name='interests' value='seeking' />
+              <span>Seeking Employment</span>
+            </label>
+            <label>
+              <input type='checkbox' name='interests' value='hobby' />
+              <span>Hobby Building</span>
+            </label>
+            <label>
+              <input type='checkbox' name='interests' value='products' />
+              <span>Making Profitable Products</span>
+            </label>
+            <label>
+              <input type='checkbox' name='interests' value='networking' />
+              <span>Project Networking</span>
+            </label>
+            <label>
+              <input type='checkbox' name='interests' value='helping' />
+              <span>Helping Others</span>
+            </label>
+            <label>
+              <input type='checkbox' name='interests' value='unsure' />
+>>>>>>> parent of ff8fa0b... Incorporated React-Hook-Form and should do styled-components next:src/Form.jsx
               <span>Unsure</span>
             </CheckboxLabel>
           </CheckboxOptions>
@@ -353,10 +457,9 @@ const SignupForm = () => {
           <TextInput
             type='range'
             id='commitment-days'
-            name='Commitment'
+            name='commitment-days'
             min='1'
             max='7'
-            {...register('interestsAndAvailability.commitmentDays')}
             onChange={(e) => {
               const value = e.target.value
               document.getElementById('commitment-days-value').textContent =
