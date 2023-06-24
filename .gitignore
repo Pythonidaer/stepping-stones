@@ -14,6 +14,9 @@ src/backupForm.jsx
 src/pulltext.html
 src/backupTutorial.jsx
 src/backupCrapForm.jsx
+src/BackupLoginForm.jsx
+src/BackupSignupForm.jsx
+server/controllers/backupUserController.js
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json

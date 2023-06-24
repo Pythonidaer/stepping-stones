@@ -1,22 +1,51 @@
-import { useState } from 'react'
-import brainLogo from '/brain.svg'
-import SignupForm from './SignupForm.jsx'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import SignupForm from './pages/SignupForm.jsx'
+import LoginForm from './pages/LoginForm.jsx'
+import Profile from './pages/Profile.jsx'
+import Footer from './components/Footer.jsx'
 import GlobalStyles from './components/styles/Global.jsx'
-import HeaderContent from './components/styles/HeaderContent.styled.jsx'
-import Logo from './components/styles/Logo.styled.jsx'
+import Header from './components/Header.jsx'
+import PrivateRoute from './components/PrivateRoute.jsx'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { AuthProvider } from './context/AuthContext.jsx'
+
+// Create a custom theme
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#333333', // Set a darker grey color
+    },
+  },
+})
 
 function App() {
   return (
     <>
-      <GlobalStyles />
-      <HeaderContent>
-        <a href='https://www.linkedin.com/in/jonamichahammo/' target='_blank'>
-          <Logo src={brainLogo} className='logo' alt='Stepping Stones logo' />
-        </a>
-        <h1>STEPPING STONES</h1>
-      </HeaderContent>
-      <SignupForm />
-      <footer>Copyright Stepping Stones 2023</footer>
+      <ThemeProvider theme={theme}>
+        <AuthProvider>
+          <GlobalStyles />
+          <Router>
+            <Header />
+            <Routes>
+              <Route path='/' element={<SignupForm />} />
+            </Routes>
+            <Routes>
+              <Route path='/login' element={<LoginForm />} />
+            </Routes>
+            <Routes>
+              <Route
+                path='/profile/:id'
+                element={
+                  <PrivateRoute>
+                    <Profile />
+                  </PrivateRoute>
+                }
+              />
+            </Routes>
+            <Footer />
+          </Router>
+        </AuthProvider>
+      </ThemeProvider>
     </>
   )
 }

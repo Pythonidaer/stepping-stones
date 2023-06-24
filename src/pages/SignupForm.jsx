@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import StepRow from './components/StepRow.jsx'
-import Container from './components/styles/Container.styled.jsx'
-import ButtonContainer from './components/styles/ButtonContainer.styled.jsx'
-
+import StepRow from '../components/StepRow.jsx'
+import Container from '../components/styles/Container.styled.jsx'
+import ButtonContainer from '../components/styles/ButtonContainer.styled.jsx'
 import {
   Form,
   Title,
@@ -25,7 +25,9 @@ import {
   CommitmentDays,
   CommitmentDaysBorder,
   CommitmentDaysValue,
-} from './components/styles/Form.styled.jsx'
+} from '../components/styles/Form.styled.jsx'
+import axios from 'axios'
+import { AuthContext } from '../context/AuthContext.jsx'
 
 const handleNext1Click = () => {
   const form1 = document.getElementById('Form1')
@@ -64,19 +66,49 @@ const handleBack2Click = () => {
 }
 
 const SignupForm = () => {
-  const { register, handleSubmit, watch } = useForm()
+  const navigate = useNavigate()
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
+
+  const { user, setAuthUser, clearAuthUser } = useContext(AuthContext)
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+    getValues,
+  } = useForm()
+
   const onSubmit = async (data) => {
-    // Need to survey Apps Script to see
-    // If this data and be formatted and sent to Google Docs
-    // Requires a lot of investigation though
+    if (
+      data.personalInformation.password !==
+      data.personalInformation.confirmPassword
+    ) {
+      alert('Passwords do not match!')
+      return
+    }
     const formData = {
       personalInformation: data.personalInformation,
       educationAndSkills: data.educationAndSkills,
       interestsAndAvailability: data.interestsAndAvailability,
     }
-    console.log(formData) // Array of form data objects
-    const formattedData = JSON.stringify(data, null, 2)
-    alert(formattedData)
+
+    try {
+      const response = await axios.post(`${API_BASE_URL}/users`, formData)
+
+      if (response) {
+        setAuthUser(response.data)
+        navigate('/profile')
+      }
+
+      console.log(response.data) // Optional: Handle
+    } catch (error) {
+      if (error.response && error.response.data.error) {
+        const errorMessage = error.response.data.error
+        alert(errorMessage)
+        // Display error message to the user using Toastify or other methods
+        // ...
+      }
+    }
   }
 
   const watchAllFields = watch() // Watch all fields for changes
@@ -106,7 +138,7 @@ const SignupForm = () => {
         <Title>PERSONAL INFORMATION</Title>
         <TextInput
           type='text'
-          placeholder='Name'
+          placeholder='Full Name'
           {...register('personalInformation.fullName')}
           required
         />
@@ -114,11 +146,17 @@ const SignupForm = () => {
           type='email'
           placeholder='Email'
           {...register('personalInformation.email')}
-          required
         />
-        <TextInput type='password' placeholder='Password' required />
-        <TextInput type='password' placeholder='Confirm Password' required />
-
+        <TextInput
+          type='password'
+          placeholder='Password'
+          {...register('personalInformation.password')}
+        />
+        <TextInput
+          type='password'
+          placeholder='Confirm Password'
+          {...register('personalInformation.confirmPassword')}
+        />
         <Textarea
           placeholder='Bio'
           id='bio'
@@ -127,7 +165,7 @@ const SignupForm = () => {
           cols='50'
           {...register('personalInformation.bio')}
         ></Textarea>
-
+        {/*
         <FileUploadButton htmlFor='profile-pic' role='button'>
           <FileUploadButtonLabel>Profile Picture</FileUploadButtonLabel>
         </FileUploadButton>
@@ -140,7 +178,7 @@ const SignupForm = () => {
           {...register('personalInformation.image')}
         />
         <FileUploadInfo>Max file size 10MB. (optional)</FileUploadInfo>
-
+  */}
         <ButtonContainer>
           <button type='button' id='Next1' onClick={handleNext1Click}>
             Next

@@ -18,13 +18,6 @@ const GlobalStyles = createGlobalStyle`
   #root {
     min-height: 100%;
   }
-
-  footer {
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 `
 
 export default GlobalStyles
