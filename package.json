@@ -13,7 +13,8 @@
     "data:destroy": "node server/seeder -d",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "heroku-postbuild": "npm install --prefix stepping-stones && npm run build --prefix stepping-stones"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
