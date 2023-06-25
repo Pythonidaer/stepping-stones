@@ -5,7 +5,7 @@ import User from './models/userModel.js'
 import connectDB from './config/db.js'
 
 dotenv.config()
-
+// test
 // Connect to database
 connectDB()
 
