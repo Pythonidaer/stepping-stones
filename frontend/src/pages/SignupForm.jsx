@@ -68,7 +68,8 @@ const handleBack2Click = () => {
 const SignupForm = () => {
   const navigate = useNavigate()
 
-  const { user, setAuthUser, clearAuthUser } = useContext(AuthContext)
+  const { user, setAuthUser, getAuthUser, clearAuthUser } =
+    useContext(AuthContext)
   const {
     register,
     handleSubmit,
@@ -96,7 +97,8 @@ const SignupForm = () => {
 
       if (response) {
         setAuthUser(response.data)
-        navigate('/profile')
+        const user = getAuthUser()
+        navigate(`/profile/${user._id}`)
       }
 
       console.log(response.data) // Optional: Handle
