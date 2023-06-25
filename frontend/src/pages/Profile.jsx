@@ -5,7 +5,6 @@ import { Button, TextField, Typography, Box } from '@mui/material'
 
 const Profile = () => {
   const { setAuthUser, clearAuthUser, getAuthUser } = useContext(AuthContext)
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 
   const user = getAuthUser()
   const { token } = user
@@ -17,9 +16,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get(
-          `${API_BASE_URL}/users/profile/${user._id}`
-        )
+        const response = await axios.get(`/api/users/profile/${user._id}`)
         setUserData(response.data)
         setLoading(false)
       } catch (error) {
@@ -34,7 +31,7 @@ const Profile = () => {
     event.preventDefault()
     try {
       const response = await axios.put(
-        `${API_BASE_URL}/users/profile/${user._id}`,
+        `/api/users/profile/${user._id}`,
         userData
       )
       console.log('Data updated:', response.data)

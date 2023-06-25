@@ -10,7 +10,7 @@ import {
 import { useNavigate } from 'react-router-dom'
 
 import MenuIcon from '@mui/icons-material/Menu'
-import brainLogo from '../assets/brain.svg'
+import brainLogo from './images/brain.svg'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
 

@@ -10,7 +10,6 @@ import { AuthContext } from '../context/AuthContext.jsx'
 
 const LoginForm = () => {
   const navigate = useNavigate()
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 
   /* removed from package.json
     // "proxy": "http://127.0.0.1:5000/",
@@ -33,8 +32,7 @@ const LoginForm = () => {
     }
 
     try {
-      //   const response = await axios.post(`/api/users/login`, formData)
-      const response = await axios.post(`${API_BASE_URL}/users/login`, formData)
+      const response = await axios.post(`/api/users/login`, formData)
       console.log(response)
 
       if (response) {

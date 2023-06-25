@@ -67,7 +67,6 @@ const handleBack2Click = () => {
 
 const SignupForm = () => {
   const navigate = useNavigate()
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 
   const { user, setAuthUser, clearAuthUser } = useContext(AuthContext)
   const {
@@ -93,7 +92,7 @@ const SignupForm = () => {
     }
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/users`, formData)
+      const response = await axios.post(`/api/users`, formData)
 
       if (response) {
         setAuthUser(response.data)
