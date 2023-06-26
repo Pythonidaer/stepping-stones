@@ -210,7 +210,7 @@ const SignupForm = () => {
 
         <TextInput
           type='text'
-          placeholder='Bootcamp Location: mm/dd/yyyy'
+          placeholder='Graduation Year: mm/dd/yyyy'
           id='graduation-year'
           name='graduation-year'
         />

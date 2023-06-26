@@ -18,6 +18,12 @@ const GlobalStyles = createGlobalStyle`
   #root {
     min-height: 100%;
   }
+
+  input,
+  select,
+  textarea {
+    touch-action: manipulation;
+  }
 `
 
 export default GlobalStyles
